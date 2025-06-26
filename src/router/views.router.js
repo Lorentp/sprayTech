@@ -30,7 +30,6 @@ router.get("/home", async (req, res) => {
     }
 
     userId = req.session.user._id;
-
     user = req.session.user;
     res.render("home", { user });
   } catch (error) {

@@ -10,7 +10,7 @@ router.post("/", async (req,res) =>{
             password,
             farmname
         })
-        res.send({ message: "Usuario creado con exito"})
+        res.redirect("/")
     } catch (error) {
         res.send(error)
     }

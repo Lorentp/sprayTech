@@ -8,7 +8,7 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Dueño</th>
+        <th>Productor</th>
         <th>Hectares</th>
         <th>Acciones</th>
       </tr>
@@ -17,7 +17,7 @@
       {{#each fields}}
         <tr>
           <td data-label="Nombre">{{this.name}}</td>
-          <td data-label="Dueño">{{this.farmname}}</td>
+          <td data-label="Productor">{{this.farmname}}</td>
           <td data-label="Hectares">{{this.ha}}</td>
           <td data-label="Acciones">
             <button onclick="deleteField('{{this._id}}')">Eliminar</button>

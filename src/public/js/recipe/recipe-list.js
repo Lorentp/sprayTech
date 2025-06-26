@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title = "Uso Total de Productos";
       products = recipe.recipe?.[0]?.products_total;
       extraInfo = `
+        <p><strong>Lote:</strong> ${recipe.field.name} / ${recipe.field.farmname}</p>
         <p><strong>Costo Total:</strong> $${recipe.totalCost ? parseFloat(recipe.totalCost).toFixed(3) : "N/A"}</p>
         <p><strong>Costo por Hectárea:</strong> $${recipe.costPerHa ? parseFloat(recipe.costPerHa).toFixed(3) : "N/A"}</p>
         <p><strong>Litros por Hectárea:</strong> ${ltsXHa} lts/ha</p>
@@ -23,11 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const litersPerTank = recipe.recipe?.[0]?.liters_per_tank ? parseFloat(recipe.recipe[0].liters_per_tank).toFixed(3) : "N/A";
       const tanks = recipe.recipe?.[0]?.tanks ? Math.round(parseFloat(recipe.recipe[0].tanks)) : "N/A";
       extraInfo = `
+        <p><strong>Lote:</strong> ${recipe.field.name} / ${recipe.field.farmname}</p>
         <p><strong>Cantidad de Tancadas:</strong> ${tanks}</p>
         <p><strong>Litros por Tanque:</strong> ${litersPerTank} lts</p>
         <p><strong>Litros por Hectárea:</strong> ${ltsXHa} lts/ha</p>
       `;
     } else if (type === "per_ha") {
+      extraInfo = `
+        <p><strong>Lote:</strong> ${recipe.field.name} / ${recipe.field.farmname}</p>
+      `;
       title = "Productos por Hectárea";
       products = recipe.recipe?.[0]?.products_per_ha;
     } else {
