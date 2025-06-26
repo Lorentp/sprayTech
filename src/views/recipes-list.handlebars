@@ -1,0 +1,37 @@
+<nav>
+    <a href="/home" class="link-button">Volver al inicio</a>
+    <a href="/recetas" class="link-button">Crear recetas</a>
+</nav>
+
+<div class="form-container">
+    <h1>Mis Recetas</h1>
+    {{#if recipes.length}}
+      <table class="recipes-table">
+        <thead>
+          <tr>
+            <th>Lote</th>
+            <th>Fecha de Aplicación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each recipes}}
+            <tr>
+              <td>{{field.name}}</td>
+              <td>{{formatDate date}}</td>
+              <td>
+                <button class="action-btn" onclick="showProducts('total', {{json this}})">Uso Total</button>
+                <button class="action-btn" onclick="showProducts('per_t', {{json this}})">Por Tancada</button>
+                <button class="action-btn" onclick="showProducts('per_ha', {{json this}})">Por Hectárea</button>
+                <button class="delete-btn action-btn" onclick="deleteRecipe('{{_id}}')">Eliminar</button>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p>No hay recetas registradas.</p>
+    {{/if}}
+  </div>
+
+<script src="/js/recipe/recipe-list.js"></script>

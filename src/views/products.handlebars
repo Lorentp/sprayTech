@@ -1,0 +1,52 @@
+<nav>
+    <a href="/home" class="link-button">Volver al inicio</a>
+    <a href="/lotes" class="link-button">Ver Lotes</a>
+</nav>
+
+<div class="add-page-buttons">
+    <button id="newProductButton" class="add-page-button">Agregar producto</button>
+    <button id="newFieldButton" class="add-page-button">Agregar lote</button>
+</div>
+
+
+<div class="hidden" id="newProductForm">
+    {{>products/newProduct}}
+</div>
+
+
+<div class="hidden" id="newFieldForm">
+    {{>fields/newField}}
+</div>
+
+<div class="form-container">
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Unidad</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+        <tr>
+          <td data-label="Nombre">{{this.name}}</td>
+          <td data-label="Unidad">{{this.type}}</td>
+          <td data-label="Precio">{{this.price}}</td>
+          <td data-label="Acciones">
+            <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+            <button onclick="showEditPriceForm('{{this._id}}')">Modificar Precio</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<script src="/js/product-field/delete-product.js"></script>
+<script src="/js/sweet-alert/delete-product-sa.js"></script>
+<script src="/js/sweet-alert/update-product-sa.js"></script>
+<script src="/js/product-field/buttons-forms.js"></script>
+<script src="/js/sweet-alert/new-product-sa.js"></script>
+<script src="/js/sweet-alert/new-field-sa.js"></script>

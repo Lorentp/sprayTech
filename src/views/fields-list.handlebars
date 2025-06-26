@@ -1,0 +1,31 @@
+<nav>
+  <a href="/home" class="link-button">Volver al inicio</a>
+  <a href="/productos" class="link-button">Cargar productos</a>
+</nav>
+
+<div class="form-container">
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Dueño</th>
+        <th>Hectares</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each fields}}
+        <tr>
+          <td data-label="Nombre">{{this.name}}</td>
+          <td data-label="Dueño">{{this.farmname}}</td>
+          <td data-label="Hectares">{{this.ha}}</td>
+          <td data-label="Acciones">
+            <button onclick="deleteField('{{this._id}}')">Eliminar</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<script src="/js/sweet-alert/delete-field-sa.js"></script>

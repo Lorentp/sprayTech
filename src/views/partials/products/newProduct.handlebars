@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>Crear nuevo producto</h2>
+  <form action="/products/new-product" method="post">
+    <div>
+      <p>Nombre del producto:</p>
+      <input type="text" name="name" />
+    </div>
+    <div>
+      <p>Precio del producto:</p>
+      <input type="numer" name="price" />
+    </div>
+    <div>
+      <p>Unidad de medida</p>
+      <select name="type" id="">
+        <option value="" disabled selected>Seleccionar unidad</option>
+        <option value="Kgs">Kilos</option>
+        <option value="Lts">Litros</option>
+        <option value="Gs">Gramos</option>
+        <option value="Cc">Centrimetros cubicos</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" class="submit-button" value="Guardar producto" />
+    </div>
+  </form>
+</div>
