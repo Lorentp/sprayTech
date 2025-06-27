@@ -52,7 +52,7 @@ class ProductManager {
   async getProducts(owner) {
     try {
       const ownerId = owner._id || owner;
-      const products = await Product.find({ owner: ownerId }).lean();
+      const products = await Product.find({ owner: ownerId }).sort({ name: 1 }).lean();
       return products;
     } catch (error) {
       console.log(error);

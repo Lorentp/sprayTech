@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (type === "per_ha") {
       extraInfo = `
         <p><strong>Lote:</strong> ${recipe.field.name} / ${recipe.field.farmname}</p>
+        <p><strong>Hectareas:</strong> ${recipe.ha}</p>
+        <p><strong>Litros por Hectárea:</strong> ${ltsXHa} lts/ha</p>
       `;
       title = "Productos por Hectárea";
       products = recipe.recipe?.[0]?.products_per_ha;

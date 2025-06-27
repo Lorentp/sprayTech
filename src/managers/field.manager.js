@@ -53,7 +53,7 @@ class FieldManager {
   async getFields(owner) {
     try {
       const ownerId = owner._id || owner;
-      const fields = await Field.find({ owner: ownerId }).lean();
+      const fields = await Field.find({ owner: ownerId }).sort({ name: 1 }).lean();
       return fields;
     } catch (error) {
       console.log(error);
