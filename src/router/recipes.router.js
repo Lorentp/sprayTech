@@ -108,6 +108,7 @@ router.post("/new-recipe", async (req, res) => {
     const recipeData = {
       owner,
       field,
+      ha: parsedHa,
       recipe: [
         {
           tanks: parseFloat(tanks),

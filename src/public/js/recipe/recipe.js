@@ -7,22 +7,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const fieldSelect = document.getElementById("field");
   const fieldFarmname = document.getElementById("fieldFarmname");
   const fieldHa = document.getElementById("fieldHa");
-  const haInput = document.getElementById("ha");
 
   fieldSelect.addEventListener("change", () => {
     const selectedFieldId = fieldSelect.value;
     const field = fields.find((f) => f._id === selectedFieldId);
     if (field) {
       fieldFarmname.textContent = `Dueño: ${field.farmname}`;
-      fieldHa.textContent = `${field.ha} ha`;
-      haInput.value = field.ha;
+      fieldHa.value = field.ha; // Asignar valor inicial al input
       updateTanks();
       updateCosts();
     } else {
       fieldFarmname.textContent = "";
       fieldHa.textContent = "";
-      haInput.value = "";
     }
+  });
+
+  // Actualizar cálculos cuando cambie el input de hectáreas
+  fieldHa.addEventListener("input", () => {
+    updateTanks();
+    updateCosts();
+    document.querySelectorAll("#productsContainer .form-group").forEach(updateUnitAndTotal);
   });
 
   // Calcular tancadas
@@ -31,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tanksSpan = document.getElementById("tanks");
 
   function updateTanks() {
-    const ha = parseFloat(haInput.value) || 0;
+    const ha = parseFloat(fieldHa.value) || 0;
     const maxTank = parseFloat(maxTankInput.value) || 0;
     const ltsXHa = parseFloat(ltsXHaInput.value) || 0;
     if (ha && maxTank && ltsXHa) {
@@ -84,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const quantityInput = container.querySelector("input");
     const unitSpan = container.querySelector(".unit");
     const totalSpan = container.querySelector(".total");
-    const ha = parseFloat(haInput.value) || 0;
+    const ha = parseFloat(fieldHa.value) || 0;
     const selectedOption = select.selectedOptions[0];
     if (selectedOption && selectedOption.dataset.type) {
       unitSpan.textContent = selectedOption.dataset.type;
@@ -103,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const costPerHaInput = document.getElementById("costPerHaInput");
 
   function updateCosts() {
-    const ha = parseFloat(haInput.value) || 0;
+    const ha = parseFloat(fieldHa.value) || 0;
     let totalCost = 0;
     document.querySelectorAll("#productsContainer .form-group").forEach((container) => {
       const select = container.querySelector("select");

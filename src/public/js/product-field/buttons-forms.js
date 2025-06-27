@@ -7,10 +7,10 @@ const newFieldForm = document.getElementById("newFieldForm");
 function showOrHideElement(e) {
   if (e.classList.contains("hidden")) {
     e.classList.remove("hidden");
-    window.scroll({
+    /*window.scroll({
       top: document.body.scrollHeight * (40 / 100),
       behavior: "smooth",
-    });
+    });*/
   } else {
     e.classList.add("hidden");
   }

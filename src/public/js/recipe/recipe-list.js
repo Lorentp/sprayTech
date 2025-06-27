@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       products = recipe.recipe?.[0]?.products_total;
       extraInfo = `
         <p><strong>Lote:</strong> ${recipe.field.name} / ${recipe.field.farmname}</p>
+        <p><strong>Hectareas:</strong> ${recipe.ha}</p>
         <p><strong>Costo Total:</strong> $${recipe.totalCost ? parseFloat(recipe.totalCost).toFixed(3) : "N/A"}</p>
         <p><strong>Costo por Hectárea:</strong> $${recipe.costPerHa ? parseFloat(recipe.costPerHa).toFixed(3) : "N/A"}</p>
         <p><strong>Litros por Hectárea:</strong> ${ltsXHa} lts/ha</p>
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const tanks = recipe.recipe?.[0]?.tanks ? Math.round(parseFloat(recipe.recipe[0].tanks)) : "N/A";
       extraInfo = `
         <p><strong>Lote:</strong> ${recipe.field.name} / ${recipe.field.farmname}</p>
+        <p><strong>Hectareas totales:</strong> ${recipe.ha}</p>
         <p><strong>Cantidad de Tancadas:</strong> ${tanks}</p>
         <p><strong>Litros por Tanque:</strong> ${litersPerTank} lts</p>
         <p><strong>Litros por Hectárea:</strong> ${ltsXHa} lts/ha</p>

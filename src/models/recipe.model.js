@@ -80,6 +80,10 @@ const recipeSchema = new mongoose.Schema({
     ref: "Field",
     required: true,
   },
+  ha: {
+    type: Number,
+    required: true
+  },
   recipe: {
     type: [recipeItemSchema],
     required: true,

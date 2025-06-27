@@ -10,6 +10,7 @@
         <thead>
           <tr>
             <th>Lote</th>
+            <th>Has</th>
             <th>Fecha de Aplicación</th>
             <th>Acciones</th>
           </tr>
@@ -18,6 +19,7 @@
           {{#each recipes}}
             <tr>
               <td>{{field.name}}</td>
+              <td>{{ha}}</td>
               <td>{{formatDate date}}</td>
               <td>
                 <button class="action-btn" onclick="showProducts('total', {{json this}})">Uso Total</button>

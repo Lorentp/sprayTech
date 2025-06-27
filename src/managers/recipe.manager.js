@@ -11,6 +11,12 @@ class RecipeManager {
 
       const ownerId = new mongoose.Types.ObjectId(recipeData.owner);
       const fieldId = new mongoose.Types.ObjectId(recipeData.field);
+      const ha = parseFloat(recipeData.ha);
+      
+      if (isNaN(ha) || ha <= 0) {
+      throw new Error("El campo ha debe ser un número mayor a 0");
+     }
+
 
       if (!Array.isArray(recipeData.recipe) || recipeData.recipe.length === 0) {
         throw new Error("El campo recipe debe ser un array no vacío");
@@ -32,6 +38,7 @@ class RecipeManager {
       const recipe = await Recipe.create({
         owner: ownerId,
         field: fieldId,
+        ha: ha,
         recipe: recipeData.recipe,
         date: recipeData.date ? new Date(recipeData.date) : undefined,
         totalCost: parseFloat(recipeData.totalCost).toFixed(3),
